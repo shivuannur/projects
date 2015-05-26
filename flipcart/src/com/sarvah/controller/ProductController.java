@@ -16,6 +16,7 @@ import com.sarvah.DTO.ProductBean;
 
 /**
  * Servlet implementation class ProductInsertController
+ * @author shivu s
  */
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
