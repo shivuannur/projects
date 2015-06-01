@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="pink">
-<h1 align="center">Invalid UserName and Password</h1>
-<h2 align="center"><a href="AdminLogin.jsp">Back</a></h2>
+<h1 align="center">data inserted to DB Successfully....</h1>
+<h2 align="center">if you want to search the data click</h2><h2 align="center"><a href="Search.jsp">here</a></h2>
 </body>
 </html>

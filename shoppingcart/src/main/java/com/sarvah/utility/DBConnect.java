@@ -1,9 +1,11 @@
 package com.sarvah.utility;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
-import com.sarvah.DTO.UserBean;
+import com.sarvah.dto.UserBean;
 public class DBConnect 
 {
 	static Logger log = Logger.getLogger(UserBean.class);

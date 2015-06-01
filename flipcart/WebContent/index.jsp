@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor="pink">
-<form action="LoginController" method="post">
+<form action="UserLoginController" method="post">
 <table align="center">
 	<caption>User Login Page</caption>
 	

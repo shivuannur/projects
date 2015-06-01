@@ -8,6 +8,6 @@
 </head>
 <body bgcolor="pink">
 <h1 align="center">Invalid UserName and Password</h1>
-<h2 align="center"><a href="AdminLogin.jsp">Back</a></h2>
+<h2 align="center"><a href="index.jsp">Back</a></h2>
 </body>
 </html>

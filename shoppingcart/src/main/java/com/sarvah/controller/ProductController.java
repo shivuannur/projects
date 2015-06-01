@@ -3,9 +3,6 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.sarvah.DAO.DAOInterface;
-import com.sarvah.DAO.ProductDAO;
-import com.sarvah.DTO.ProductBean;
+import com.sarvah.dao.DAOInterface;
+import com.sarvah.dao.ProductDAO;
+import com.sarvah.dto.ProductBean;
 
 /**
  * Servlet implementation class ProductInsertController

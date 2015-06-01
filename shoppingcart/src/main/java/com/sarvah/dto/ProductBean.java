@@ -1,4 +1,4 @@
-package com.sarvah.DTO;
+package com.sarvah.dto;
 
 import org.apache.log4j.Logger;
 
