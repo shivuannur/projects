@@ -45,7 +45,6 @@ public class ProductDAO implements ProductInterface {
 			
 			stmt=conn.createStatement();
 			stmt.execute(query2);
-			pstmt.close();
  
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -91,7 +90,7 @@ public class ProductDAO implements ProductInterface {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally
+		/*finally
 		{
 			try
 			{
@@ -109,7 +108,7 @@ public class ProductDAO implements ProductInterface {
 			{
 				e.printStackTrace();
 			}
-		}
+		}*/
 		return result;
 	}
 	
@@ -118,7 +117,7 @@ public class ProductDAO implements ProductInterface {
 	public boolean  deleteProduct(ProductBean bean)
 	{
 		String query1="delete from flipkart.product where Pname=?";
-		String query2="update userdb.inventory set InventoryCount=InventoryCount-2 where InventoryId=1";
+		String query2="update userdb.inventory set InventoryCount=InventoryCount-1 where InventoryId=1";
 		try {
 			conn=dataSource.getConnection();
 			pstmt=conn.prepareStatement(query1);
