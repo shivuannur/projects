@@ -33,6 +33,4 @@ public class HelloWorldServlet extends HttpServlet {
 		request.getRequestDispatcher("update.jsp").forward(request, response);
 
 	}
-
-
 }

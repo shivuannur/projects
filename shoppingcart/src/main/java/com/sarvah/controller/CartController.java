@@ -68,6 +68,7 @@ public class CartController extends HttpServlet {
 		  } else {
 		   cartBean = new CartBean();
 		  }
+		  log.info("Item deleted successfully...");
 		  cartBean.deleteCartItem(strItemIndex);
 		 }
 		  
@@ -84,6 +85,7 @@ public class CartController extends HttpServlet {
 		  } else {
 		   cartBean = new CartBean();
 		  }
+		  log.info("Item Updated successfully...");
 		  cartBean.updateCartItem(strItemIndex, strQuantity);
 		 }
 		  
@@ -102,6 +104,7 @@ public class CartController extends HttpServlet {
 		   cartBean = (CartBean) objCartBean ;
 		  } else {
 		   cartBean = new CartBean();
+		   
 		   session.setAttribute("cart", cartBean);
 		  }
 		   

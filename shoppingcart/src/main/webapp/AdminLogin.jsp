@@ -25,7 +25,7 @@
 		<tr>
 			<td><button type="submit">Login</button></td>	
 			<td><button type="reset">Cancel</button></td></tr>
-			<tr><td><a href="UserLogin.jsp">UserLogin</a></td>
+			<tr><td><a href="index.jsp">UserLogin</a></td>
 		</tr>
 	
 		</table>

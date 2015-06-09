@@ -8,10 +8,22 @@ public class ProductBean {
 	static Logger log = Logger.getLogger(ProductBean.class);
 	int pid;
 	int scid;
-	String catalogno;
 	String pname;
 	double price;
 	String modifieddate;
+	
+	public ProductBean(int pid,int scid,String pname,double price,String modifieddate)
+	{
+		this.pid=pid;
+		this.scid=scid;
+		this.pname=pname;
+		this.price=price;
+		this.modifieddate=modifieddate;
+	}
+	public ProductBean(String pname)
+	{
+		this.pname=pname;
+	}
 	public int getPid() {
 		return pid;
 	}
@@ -24,12 +36,7 @@ public class ProductBean {
 	public void setScid(int scid) {
 		this.scid = scid;
 	}
-	public String getCatalogno() {
-		return catalogno;
-	}
-	public void setCatalogno(String catalogno) {
-		this.catalogno = catalogno;
-	}
+	
 	public String getPname() {
 		return pname;
 	}

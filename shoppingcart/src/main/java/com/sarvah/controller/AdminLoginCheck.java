@@ -17,6 +17,7 @@ import com.sarvah.dao.AdminLoginDAO;
 import com.sarvah.dto.AdminLoginDTO;
 
 
+
 /**
  * Servlet implementation class AdminLoginCheck
  */
@@ -28,7 +29,7 @@ public class AdminLoginCheck extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	static Logger log = Logger.getLogger(AdminLoginCheck.class);
-  
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +46,7 @@ public class AdminLoginCheck extends HttpServlet {
 		String email=request.getParameter("email");
 		String password=request.getParameter("password");
 		
+		
 		AdminLoginDTO bean=new AdminLoginDTO();
 		bean.setEmail(email);
 		bean.setPassword(password);
@@ -53,12 +55,19 @@ public class AdminLoginCheck extends HttpServlet {
 		try {
 			if(result.next())
 			{
+				
+				 log.info("valid admin!.. Login success");
+				 
+
+				 
+				 
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Home.jsp");
 				dispatcher.forward(request, response);
 				
 			}
 			else
 			{
+				log.info("InValid admin!.. Login failed");
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
 				dispatcher.forward(request, response);
 			}

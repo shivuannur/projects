@@ -57,11 +57,13 @@ public class UserLoginController extends HttpServlet {
 		try {
 			if(result.next())
 			{
+				log.info("Valid User!... login success...");
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/ModelList.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
 			{
+				log.info("InValid User!... login failure...");
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error2.jsp");
 				dispatcher.forward(request, response);	
 			}
@@ -96,11 +98,15 @@ public class UserLoginController extends HttpServlet {
 			boolean res=dao.registerUser(bean);
 			if(res!=true)
 			{
+				log.info("User insert success...");
+
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/UserLogin.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
 			{
+				log.info("User login failure...");
+
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
 				dispatcher.forward(request, response);
 			}

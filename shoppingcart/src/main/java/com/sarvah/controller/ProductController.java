@@ -12,8 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import com.sarvah.dao.DAOInterface;
+import com.sarvah.config.HelloConfig;
+import com.sarvah.dao.ProductInterface;
 import com.sarvah.dao.ProductDAO;
 import com.sarvah.dto.ProductBean;
 
@@ -43,29 +48,29 @@ public class ProductController extends HttpServlet {
 		if(i==1)
 		{
 			//insert
-			System.out.println("Insert Called");
+			System.out.println("Insert product is Called");
 			int pid=Integer.parseInt(request.getParameter("pid"));
 			int scid=Integer.parseInt(request.getParameter("scid"));
 			String pname=request.getParameter("pname");
 			double price=Double.parseDouble(request.getParameter("price"));
 			String modifieddate=request.getParameter("modifieddate");
 			
-			ProductBean bean=new ProductBean();
-			bean.setPid(pid);
-			bean.setScid(scid);
-			bean.setPname(pname);
-			bean.setPrice(price);
-			bean.setModifieddate(modifieddate);
+			WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+			 
+			ProductInterface pinterface=(ProductInterface) context.getBean("productDAO");
 			
-			DAOInterface dao=new ProductDAO();
-			boolean res=dao.insertProduct(bean);
+			ProductBean bean=new ProductBean(pid,scid,pname,price,modifieddate);
+			
+			boolean res= pinterface.insertProduct(bean);
 			if(res!=true)
 			{
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/Welcome.jsp");
+				log.info("Product inserted successfully...");
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/success.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
 			{
+				log.info("Product insert Failure...");
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
 				dispatcher.forward(request, response);	
 			}
@@ -75,16 +80,19 @@ public class ProductController extends HttpServlet {
 		if(i==2)
 		{
 			//search
-			System.out.println("search operation");
+			System.out.println("search product is called");
 			String pname=request.getParameter("pname");
-			ProductBean bean=new ProductBean();
-			bean.setPname(pname);
-			DAOInterface dao=new ProductDAO();
 			
-			ResultSet res=dao.searchProduct(bean);
+			WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+			ProductInterface pinterface=(ProductInterface) context.getBean("productDAO");
+			
+			ProductBean bean=new ProductBean(pname);
+		
+			ResultSet res=pinterface.searchProduct(bean);
 			try {
 				if(res.next())
 				{
+					log.info("Product search success...");
 					HttpSession session=request.getSession(true);
 					session.setAttribute("pid", res.getInt("Pid"));
 					session.setAttribute("scid", res.getInt("SCid"));
@@ -96,6 +104,7 @@ public class ProductController extends HttpServlet {
 				}
 				else
 				{
+					log.info("Product search fails...");
 					RequestDispatcher dispatcher=request.getRequestDispatcher("/Error1.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -105,22 +114,28 @@ public class ProductController extends HttpServlet {
 			} 
 			
 		}
+		
 		if(i==3)
 		{
 			//delete
-			System.out.println("delete operation");
+			System.out.println("delete product is called");
 			String pname=request.getParameter("pname");
-			ProductBean bean=new ProductBean();
-			bean.setPname(pname);
-			DAOInterface dao=new ProductDAO();
-			boolean res=dao.deleteProduct(bean);
+
+			WebApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(this.getServletContext());
+			
+			ProductInterface pinterface=(ProductInterface) context.getBean("productDAO");
+			ProductBean bean=new ProductBean(pname);
+			pinterface.deleteProduct(bean);
+			boolean res=pinterface.deleteProduct(bean);
 			if(res!=true)
 			{
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/Welcome3.jsp");
+				log.info("Product delete success...");
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/deletesuccess.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
 			{
+				log.info("Product delete failure...");
 				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
 				dispatcher.forward(request, response);
 			}

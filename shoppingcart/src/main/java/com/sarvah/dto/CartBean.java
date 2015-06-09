@@ -68,6 +68,7 @@ public class CartBean {
 	    cartItem.setQuantity(iQuantity);
 	    cartItem.setTotalCost(dblTotalCost);
 	    alCartItems.add(cartItem);
+	    log.info("Item added into cart success...");
 	    calculateOrderTotal();
 	   }
 	    

@@ -11,6 +11,13 @@ public class AdminLoginDTO {
 	private int Id;
 	private String name;
 	private String email;
+	
+	/*public AdminLoginDTO(int Id,String name,String email)
+	{
+		this.Id=Id;
+		this.name=name;
+		this.email=email;
+	}*/
 	public void setId(int id) {
 		Id = id;
 	}
