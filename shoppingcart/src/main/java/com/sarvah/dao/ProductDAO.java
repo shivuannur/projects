@@ -116,6 +116,7 @@ public class ProductDAO implements ProductInterface {
 	
 	public boolean  deleteProduct(ProductBean bean)
 	{
+		boolean res=false;
 		String query1="delete from flipkart.product where Pname=?";
 		String query2="update userdb.inventory set InventoryCount=InventoryCount-1 where InventoryId=1";
 		try {
@@ -152,6 +153,7 @@ public class ProductDAO implements ProductInterface {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(res);
 		return res;
 	}
 

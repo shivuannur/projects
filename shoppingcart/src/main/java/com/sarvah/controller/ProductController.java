@@ -65,13 +65,13 @@ public class ProductController extends HttpServlet {
 			if(res!=true)
 			{
 				log.info("Product inserted successfully...");
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/success.jsp");
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/insertsuccess.jsp");
 				dispatcher.forward(request, response);
 			}
 			else
 			{
 				log.info("Product insert Failure...");
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/insertfail.jsp");
 				dispatcher.forward(request, response);	
 			}
 		} 
@@ -99,13 +99,13 @@ public class ProductController extends HttpServlet {
 					session.setAttribute("pname", res.getString("Pname"));
 					session.setAttribute("price", res.getString("Price"));
 					session.setAttribute("modifieddate", res.getString("ModifiedDate"));
-					RequestDispatcher dispatcher=request.getRequestDispatcher("/Welcome1.jsp");
+					RequestDispatcher dispatcher=request.getRequestDispatcher("/searchsuccess.jsp");
 					dispatcher.forward(request, response);
 				}
 				else
 				{
 					log.info("Product search fails...");
-					RequestDispatcher dispatcher=request.getRequestDispatcher("/Error1.jsp");
+					RequestDispatcher dispatcher=request.getRequestDispatcher("/searchfail.jsp");
 					dispatcher.forward(request, response);
 				}
 			} catch (SQLException e) {
@@ -136,7 +136,7 @@ public class ProductController extends HttpServlet {
 			else
 			{
 				log.info("Product delete failure...");
-				RequestDispatcher dispatcher=request.getRequestDispatcher("/Error.jsp");
+				RequestDispatcher dispatcher=request.getRequestDispatcher("/deletefail.jsp");
 				dispatcher.forward(request, response);
 			}
 		}
